@@ -3,13 +3,16 @@ package com.bhaskarshashwath.expense.tracker.services;
 import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
+import java.awt.dnd.DropTarget;
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
+import java.util.Map;
 
 
 @Service
@@ -38,6 +41,17 @@ public class JwtService {
 
     public Boolean validateToken(String token, UserInfo user){
         return ( getUsername(token).equals(user.getUsername()) && !isTokenExpired(token));
+    }
+
+    public String createToken(Map<String, Object> claims, String username){
+
+        return Jwts
+                .builder()
+                .claims(claims)
+                .subject(username)
+                .setIssuedAt( new Date(System.currentTimeMillis()))
+                .setExpiration( new Date(System.currentTimeMillis() + 1000*60*1)) // set the expiration time to 1 minute from creation
+                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
 
     private Claims extracatAllClaims(String token){
