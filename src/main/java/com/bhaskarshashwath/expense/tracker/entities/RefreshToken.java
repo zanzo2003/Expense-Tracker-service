@@ -14,12 +14,12 @@ import java.time.Instant;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @Table(name = "refresh_token")
-public class RefreshTokens {
+public class RefreshToken {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)

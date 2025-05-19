@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.dto;
+package com.bhaskarshashwath.expense.tracker.services;
 
 import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
 import com.bhaskarshashwath.expense.tracker.entities.UserRoles;
@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomUserDetailsDTO extends UserInfo implements UserDetails {
+public class CustomUserDetails extends UserInfo implements UserDetails {
+
     private String username;
+
     private String password;
+
     Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUserDetailsDTO(UserInfo user){
+    public CustomUserDetails(UserInfo user){
         this.username = user.getUsername();
         this.password = user.getPassword();
         List<GrantedAuthority> authorityList = new ArrayList<>();

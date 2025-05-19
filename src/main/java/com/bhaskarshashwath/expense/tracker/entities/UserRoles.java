@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_roles")
+@Table(name = "user_roles", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name")
+})
 public class UserRoles {
 
     @Id
@@ -18,6 +20,7 @@ public class UserRoles {
     @Column(name = "role_id")
     private Long roleId;
 
+    @Column(nullable = false)
     private String name;
 
 }
