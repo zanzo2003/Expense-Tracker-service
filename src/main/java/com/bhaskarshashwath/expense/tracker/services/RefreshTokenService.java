@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -39,5 +40,8 @@ public class RefreshTokenService {
         return token;
     }
 
+    public Optional<RefreshToken> findByToken(String token){
+        return tokenRepository.findByToken(token);
+    }
 
 }
