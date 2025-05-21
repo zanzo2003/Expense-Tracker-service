@@ -1,6 +1,6 @@
 package com.bhaskarshashwath.expense.tracker.modal;
 
-import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
+import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

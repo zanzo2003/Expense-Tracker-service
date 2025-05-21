@@ -1,6 +1,6 @@
 package com.bhaskarshashwath.expense.tracker.repository;
 
-import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
+import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

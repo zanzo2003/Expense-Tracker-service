@@ -1,10 +1,10 @@
-package com.bhaskarshashwath.expense.tracker.services;
+package com.bhaskarshashwath.expense.tracker.service;
 
 
-import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
+import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
 import com.bhaskarshashwath.expense.tracker.modal.UserInfoDTO;
 import com.bhaskarshashwath.expense.tracker.repository.UserInfoRepository;
-import com.bhaskarshashwath.expense.tracker.utils.ValidationUtil;
+import com.bhaskarshashwath.expense.tracker.util.ValidationUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,9 +22,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserInfoRepository userRepository;
-
-    @Autowired
-    private RefreshTokenService refreshTokenService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

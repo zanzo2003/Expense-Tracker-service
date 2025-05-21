@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.entities;
+package com.bhaskarshashwath.expense.tracker.entity;
 
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;

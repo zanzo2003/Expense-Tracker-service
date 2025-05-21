@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.utils;
+package com.bhaskarshashwath.expense.tracker.util;
 
 
 import com.bhaskarshashwath.expense.tracker.modal.UserInfoDTO;

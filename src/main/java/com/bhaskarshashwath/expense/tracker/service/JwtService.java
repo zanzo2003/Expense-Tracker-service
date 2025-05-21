@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.services;
+package com.bhaskarshashwath.expense.tracker.service;
 
 import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
 import io.jsonwebtoken.Claims;
