@@ -1,7 +1,7 @@
-package com.bhaskarshashwath.expense.tracker.services;
+package com.bhaskarshashwath.expense.tracker.service;
 
-import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
-import com.bhaskarshashwath.expense.tracker.entities.UserRoles;
+import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
+import com.bhaskarshashwath.expense.tracker.entity.UserRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+
 
 public class CustomUserDetails extends UserInfo implements UserDetails {
 

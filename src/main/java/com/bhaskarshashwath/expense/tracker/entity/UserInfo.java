@@ -1,7 +1,8 @@
-package com.bhaskarshashwath.expense.tracker.entities;
+package com.bhaskarshashwath.expense.tracker.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users", uniqueConstraints = {
@@ -18,7 +20,7 @@ import java.util.Set;
 public class UserInfo {
     @Id
     @Column(name = "user_id")
-    private Long userId;
+    private String userId;
 
     @Column(nullable = false)
     private String username;
