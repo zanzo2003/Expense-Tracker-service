@@ -1,7 +1,7 @@
 package com.bhaskarshashwath.expense.tracker.util;
 
 
-import com.bhaskarshashwath.expense.tracker.modal.UserInfoDTO;
+import com.bhaskarshashwath.expense.tracker.model.UserInfoDTO;
 import org.springframework.stereotype.Component;
 
 @Component

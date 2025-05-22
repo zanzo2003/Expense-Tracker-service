@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.modal.response;
+package com.bhaskarshashwath.expense.tracker.model.response;
 
 
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.modal.request;
+package com.bhaskarshashwath.expense.tracker.model.request;
 
 
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class RefreshTokenRequestDTO {
 
     /*
-     * When a user's access token is expired he will user this DTO send refresh token for validation of session
+     * When a user's access token is expired he will use this DTO send refresh token for validation of session
      * then will get the new access token
      */
     private String token;

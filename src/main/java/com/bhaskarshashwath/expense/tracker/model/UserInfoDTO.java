@@ -1,4 +1,4 @@
-package com.bhaskarshashwath.expense.tracker.modal;
+package com.bhaskarshashwath.expense.tracker.model;
 
 import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
 

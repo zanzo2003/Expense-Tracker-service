@@ -1,15 +1,14 @@
 package com.bhaskarshashwath.expense.tracker.service;
 
 
-import com.bhaskarshashwath.expense.tracker.entities.RefreshToken;
-import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
+import com.bhaskarshashwath.expense.tracker.entity.RefreshToken;
+import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
 import com.bhaskarshashwath.expense.tracker.repository.RefreshTokenRepository;
 import com.bhaskarshashwath.expense.tracker.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 

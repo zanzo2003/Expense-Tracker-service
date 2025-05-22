@@ -2,7 +2,7 @@ package com.bhaskarshashwath.expense.tracker.service;
 
 
 import com.bhaskarshashwath.expense.tracker.entity.UserInfo;
-import com.bhaskarshashwath.expense.tracker.modal.UserInfoDTO;
+import com.bhaskarshashwath.expense.tracker.model.UserInfoDTO;
 import com.bhaskarshashwath.expense.tracker.repository.UserInfoRepository;
 import com.bhaskarshashwath.expense.tracker.util.ValidationUtil;
 import lombok.AllArgsConstructor;
@@ -43,6 +43,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserInfo checkIfUserAlreadyExists(UserInfoDTO userInfoDTO){
         return userRepository.findByUsername(userInfoDTO.getUsername());
     }
+
 
     public Boolean signUpUser(UserInfoDTO userInfoDTO){
         if(Objects.nonNull(checkIfUserAlreadyExists(userInfoDTO))){

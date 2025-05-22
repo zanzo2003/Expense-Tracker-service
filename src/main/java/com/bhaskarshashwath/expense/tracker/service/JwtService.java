@@ -1,16 +1,15 @@
 package com.bhaskarshashwath.expense.tracker.service;
 
-import com.bhaskarshashwath.expense.tracker.entities.UserInfo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.awt.dnd.DropTarget;
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.function.Function;
 import java.util.Map;
 
@@ -39,8 +38,13 @@ public class JwtService {
         return claimResolver.apply(claims);
     }
 
-    public Boolean validateToken(String token, UserInfo user){
+    public Boolean validateToken(String token, UserDetails user){
         return ( getUsername(token).equals(user.getUsername()) && !isTokenExpired(token));
+    }
+
+    public String generateToken(String username){
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
     }
 
     public String createToken(Map<String, Object> claims, String username){
@@ -59,12 +63,22 @@ public class JwtService {
                 .parser()
                 .setSigningKey(getSignKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 
-    private Key getSignKey(){
-        byte[] keyBytes = Decoders.BASE64.decode(this.SECRET);
+    private SecretKey getSignKey() {
+        byte[] keyBytes = hexStringToByteArray(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+    private byte[] hexStringToByteArray(String hex) {
+        int len = hex.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+                    + Character.digit(hex.charAt(i+1), 16));
+        }
+        return data;
     }
 }
