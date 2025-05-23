@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @Slf4j
-public class AuthController {
+public class RegistrationController {
 
 
     private final JwtService jwtService;
