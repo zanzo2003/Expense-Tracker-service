@@ -10,17 +10,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_roles", uniqueConstraints = {
+@Table(name = "roles", uniqueConstraints = {
         @UniqueConstraint(columnNames = "name")
 })
 public class UserRoles {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private Long roleId;
 
     @Column(nullable = false)
     private String name;
-
 }
