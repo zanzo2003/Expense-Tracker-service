@@ -27,20 +27,19 @@ This diagram illustrates the flow from API Gateway through microservices to the 
 - 🔐 Role-based access control (RBAC)
 - 🛡️ Input validation and exception handling
 - 📦 Modular architecture
-- 📊 Production-ready with API monitoring support
 
 ---
 
 ## 🔧 Tech Stack
 
-| Layer             | Technology        |
-|------------------|-------------------|
-| Language          | Java              |
-| Framework         | Spring Boot       |
-| ORM               | Hibernate         |
-| Database          | MySQL             |
-| Auth Protocol     | JWT               |
-| Build Tool        | Maven/Gradle      |
+| Layer             | Technology    |
+|------------------|---------------|
+| Language          | Java          |
+| Framework         | Spring Boot   |
+| ORM               | Hibernate     |
+| Database          | MySQL         |
+| Auth Protocol     | JWT           |
+| Build Tool        | Maven         |
 
 ---
 
