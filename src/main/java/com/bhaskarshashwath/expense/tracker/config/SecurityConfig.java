@@ -54,7 +54,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests
                         (
                                 auth -> auth
-                                        .requestMatchers("auth/v1/login","auth/v1/refresh-token", "auth/v1/signup").permitAll()
+                                        .requestMatchers("/auth/v1/login","/auth/v1/refresh-token", "/auth/v1/signup").permitAll()
                                         .anyRequest().authenticated()
                         )
                 .sessionManagement
@@ -70,7 +70,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsPasswordService(userService);
+        authenticationProvider.setUserDetailsService(userService);
         authenticationProvider.setPasswordEncoder(passwordEncoder);
         return authenticationProvider;
     }

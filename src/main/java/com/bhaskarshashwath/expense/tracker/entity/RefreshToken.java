@@ -20,16 +20,16 @@ import java.time.Instant;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @Table(name = "refresh_token")
 public class RefreshToken {
-
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(nullable = false)
     private String token;
 
     private Instant expiryDate;
 
     @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserInfo userInfo;
 }

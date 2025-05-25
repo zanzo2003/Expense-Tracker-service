@@ -3,24 +3,26 @@ package com.bhaskarshashwath.expense.tracker.controller;
 
 import com.bhaskarshashwath.expense.tracker.entity.RefreshToken;
 import com.bhaskarshashwath.expense.tracker.model.request.AuthRequestDTO;
+import com.bhaskarshashwath.expense.tracker.model.request.RefreshTokenRequestDTO;
 import com.bhaskarshashwath.expense.tracker.model.response.ApiResponseDTO;
 import com.bhaskarshashwath.expense.tracker.model.response.JwtResponseDTO;
 import com.bhaskarshashwath.expense.tracker.service.JwtService;
 import com.bhaskarshashwath.expense.tracker.service.RefreshTokenService;
 import com.bhaskarshashwath.expense.tracker.util.ControllerHelper;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -51,13 +53,41 @@ public class AuthenticationController {
                     )
             );
 
-        }catch (Exception e) {
-            log.info("Exception caught at AuthenticationController : ", e.getMessage());
+        }catch (AuthenticationException e) {
+            log.info("Authentication Exception : ", e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(controllerHelper.createErrorResponse("authentication failed", e.getMessage()));
+        }catch (Exception e){
+            log.info("General Exception :", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(controllerHelper.createErrorResponse("Server is busy. Please try again", e.getMessage()));
         }
     }
 
+
+
+    @PostMapping("auth/v1/refresh-token")
+    public ResponseEntity<ApiResponseDTO> refreshToken(@NonNull @RequestBody RefreshTokenRequestDTO refreshTokenRequest){
+        try{
+            Optional<RefreshToken> refreshTokenOptional = refreshTokenService.findByToken(refreshTokenRequest.getToken());
+            if(!refreshTokenOptional.isPresent()){
+                throw new RuntimeException("Refresh Token is not in DB");
+            }
+            RefreshToken refreshToken = refreshTokenOptional.get();
+            return ResponseEntity.ok(controllerHelper
+                    .createSuccessResponse("refresh token valid",
+                            refreshTokenService.verifyRefreshToken(refreshToken)));
+
+        }catch (RuntimeException e) {
+            log.info("Authentication Exception : ", e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(controllerHelper.createErrorResponse("authentication failed", e.getMessage()));
+        }catch (Exception e){
+            log.info("Generic Exception : ", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(controllerHelper.createErrorResponse("Server is busy. Please try again", e.getMessage()));
+        }
+    }
 
 
 }
